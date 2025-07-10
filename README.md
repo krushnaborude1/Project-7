@@ -2,8 +2,7 @@
 
 This is a minimalist and fully functional **Todo List web application** built with **Node.js**, **Express.js**, and **EJS**. The app allows users to add, edit, and delete tasks in a clean, interactive interface.
 
-🔗 **Live Demo**: https://project-39a8.onrender.com
-
+🔗 **Live Demo**: https://project-7-lavj.onrender.com
 ---
 
 ## 🚀 Features
