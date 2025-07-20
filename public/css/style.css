@@ -1,124 +1,151 @@
 html {
     background-color: #E4E9FD;
-    background-image: -webkit-linear-gradient(65deg, #A683E3 50%,#E4E9FD 50%);
-    min-height: 1000px; 
+    background-image: linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+    min-height: 100vh;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-h1 {
-    color: #260f4d; 
-    padding: 10px;
-}
-.box {
-    max-width: 400px; 
-    margin: 50px auto; 
-    background: white; 
-    border-radius: 5px;
-    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
-}
-#heading {
-    background-color: #A683E3; 
-    text-align: center;
-}
-.item{
-    min-height: 70px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #F1F1F1;
-}
-.item:last-child { 
-    border-bottom: 0;
-}
-input:checked+p{
-    text-decoration: line-through; 
-    text-decoration-color: #A683E3;
-}
-input[type="checkbox"] {
-    margin: 20px;
-}
-p{
     margin: 0;
-    padding: 20px; 
-    font-size: 20px; 
-    font-weight: 200; 
-    color: #3f1c7a;
+    padding: 0;
 }
-form{
-    text-align: center; 
-    margin-left: 20px;
-}
-button {
-    min-height: 50px; 
-    width: 50px; 
-    border-radius: 50%;
-    border-color: transparent; 
-    background-color:#A683E3;
-    color:#fff;
-    font-size: 30px; 
-    padding-bottom: 6px; 
-    border-width: 0;
-}
-input[type="text"]{
-    text-align: center;
-    height: 60px; 
-    top: 10px; 
-    border: none;
-    background: transparent; 
-    font-size: 20px; 
-    font-weight: 200; 
-    width: 313px;
-}
-input[type="text"]:focus{
-    outline: none;
-    box-shadow: inset 0 -3px 0 0 #A683E3;
-}
-::placeholder{
-    color:grey;
-    opacity: 1;
-}
-footer { 
-    color:white;
-    color: rgba(0, 0, 0, 0.5);
+
+h1 {
+    color: #260f4d;
+    padding: 20px;
     text-align: center;
 }
-.edit-btn,
-.delete-btn {
-    background-color: #bfb1ee;
-    border: none;
-    border-radius: 50%;
-    padding: 8px;
-    font-size: 25px;
-    cursor: pointer;
+
+.box {
+    max-width: 600px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
 }
-.item { 
-    display: flex; 
-    align-items: center; 
-    margin-bottom: 10px; 
-}
-.item form { 
-    display: inline; 
-    margin-left: 10px; 
-}
-.item input[type="text"] { 
-    margin-right: 10px; 
-}
-button {
-    margin-left: 5px; 
-}
+
 .item {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #F1F1F1;
+    padding: 10px 0;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
 }
 
 .task-text {
     flex-grow: 1;
-    margin-left: 10px;
-    font-size: 1.2em;
+    font-size: 1.1rem;
+    color: #3f1c7a;
+    margin-right: 10px;
 }
 
 .actions {
     display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.actions input[type="text"] {
+    width: 100px;
+    font-size: 0.9rem;
+}
+
+button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #A683E3;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+form {
+    display: inline-block;
+}
+
+form[action="/add"] {
+    display: flex;
+    margin-top: 20px;
     gap: 10px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+form[action="/add"] input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 2px solid #A683E3;
+    background-color: transparent;
+}
+
+form[action="/add"] input[type="text"]:focus {
+    outline: none;
+    box-shadow: inset 0 -2px 0 0 #A683E3;
+}
+
+::placeholder {
+    color: grey;
+}
+
+@media (max-width: 768px) {
+    .box {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .task-text {
+        font-size: 1rem;
+    }
+
+    .actions input[type="text"] {
+        width: 80px;
+    }
+
+    button {
+        height: 35px;
+        width: 35px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .actions {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .actions input[type="text"] {
+        width: 100%;
+    }
+
+    form[action="/add"] {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    form[action="/add"] input[type="text"] {
+        width: 100%;
+    }
+
+    button {
+        align-self: flex-end;
+    }
 }
