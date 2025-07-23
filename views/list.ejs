@@ -11,27 +11,38 @@
   </div>
   <div class="box">
     <% ejes.forEach((item, i) => { %>
-        <div class="item">
-            <input type="checkbox">
-            <span class="task-text"><%= item %></span>
-            <div class="actions">
-                <form action="/edit?_method=PUT" method="POST" style="display:inline;">
-                  <input type="hidden" name="index" value="<%= i %>">
-                  <input type="text" name="newValue" placeholder="New value" required>
-                  <button type="submit">✏️</button>
-                </form>
-                <form action="/delete?_method=DELETE" method="POST" style="display:inline;">
-                  <input type="hidden" name="index" value="<%= i %>">
-                  <button type="submit">🗑️</button>
-                </form>
-            </div>
+      <div class="item">
+        <input type="checkbox">
+        <span class="task-text"><%= item %></span>
+        <div class="actions">
+          <form action="/edit?_method=PUT" method="POST" style="display:inline;">
+            <input type="hidden" name="index" value="<%= i %>">
+            <input type="text" name="newValue" placeholder="New value" required>
+            <button type="submit">✏️</button>
+          </form>
+          <form action="/delete?_method=DELETE" method="POST" style="display:inline;">
+            <input type="hidden" name="index" value="<%= i %>">
+            <button type="submit">🗑️</button>
+          </form>
         </div>
-    <% }) %> 
+      </div>
+    <% }) %>
 
     <form action="/add" method="POST">
-      <input type="text" name="ele1" placeholder="Enter the text">
+      <input type="text" name="ele1" placeholder="Enter the text" required>
       <button type="submit">+</button>
     </form>
   </div>
+
+  <script>
+    document.querySelector('form[action="/add"]').addEventListener("submit", function (e) {
+      const input = this.querySelector('input[name="ele1"]');
+      if (!input.value.trim()) {
+        e.preventDefault();
+        alert("Please enter a task before submitting.");
+        input.focus();
+      }
+    });
+  </script>
 </body>
 </html>
