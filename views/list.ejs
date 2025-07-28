@@ -3,26 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Todo List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <div class="box">
     <h1>Todo List</h1>
   </div>
+
   <div class="box">
     <% ejes.forEach((item, i) => { %>
       <div class="item">
         <input type="checkbox">
         <span class="task-text"><%= item %></span>
         <div class="actions">
-          <form action="/edit?_method=PUT" method="POST" style="display:inline;">
+          <form action="/edit?_method=PUT" method="POST">
             <input type="hidden" name="index" value="<%= i %>">
             <input type="text" name="newValue" placeholder="New value" required>
-            <button type="submit">✏️</button>
+            <button type="submit" title="Edit">✏️</button>
           </form>
-          <form action="/delete?_method=DELETE" method="POST" style="display:inline;">
+          <form action="/delete?_method=DELETE" method="POST">
             <input type="hidden" name="index" value="<%= i %>">
-            <button type="submit">🗑️</button>
+            <button type="submit" title="Delete">🗑️</button>
           </form>
         </div>
       </div>
@@ -30,7 +32,7 @@
 
     <form action="/add" method="POST">
       <input type="text" name="ele1" placeholder="Enter the text" required>
-      <button type="submit">+</button>
+      <button type="submit" title="Add">+</button>
     </form>
   </div>
 
